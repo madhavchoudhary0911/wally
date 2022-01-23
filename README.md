@@ -17,8 +17,8 @@ Flutter must be installed to run the project.
  `https://github.com/shibam-naskar/wally.git`
 - Cd into the project directory.
 - Run `flutter pub get`
-- create a pixels api key <a href="https://www.pexels.com/api/" target="_blank">Create Api Key<a/>
-- create a pixels api key for free and paste it inside `lib/pages/home.dart`
+- create a pixels api key For Free <a href="https://www.pexels.com/api/" target="_blank">Create Api Key<a/>
+- paste the api key inside `lib/pages/home.dart`
 ```javascript
 void getPhotos(searchQuery) async {
     var head = {
