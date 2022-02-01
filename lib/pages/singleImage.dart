@@ -21,7 +21,8 @@ class _SingleImageViewState extends State<SingleImageView> {
             child: Image.network(
               widget.data['src']['original'],
               fit: BoxFit.cover,
-              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
                   child: Column(
@@ -29,7 +30,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                     children: [
                       CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
                             : null,
                       ),
                       const SizedBox(
@@ -75,7 +77,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
                               ),
                             ),
                             onPressed: () {
@@ -87,7 +90,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.blue,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
                               ),
                             ),
                             onPressed: () {
