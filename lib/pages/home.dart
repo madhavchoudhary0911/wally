@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   getPhotos(final String searchQuery) async {
     var head = {
       "Authorization":
-          "563492ad6f917000010000014fada2ea0f064d3c9867af91ab6384a2"
+          "YOUR_API_KEY_HERE"
     }; //TODO: replace apiKey with your own API key
     var url = Uri.parse(searchQuery == ""
         ? 'https://api.pexels.com/v1/curated?per_page=30'
