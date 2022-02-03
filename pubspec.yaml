@@ -37,10 +37,15 @@ dependencies:
   http: ^0.13.4
   wallpaper_manager_flutter: ^0.0.2
   flutter_cache_manager: ^3.3.0
+  hive: ^2.0.5
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^1.1.2
+  build_runner: ^2.1.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
