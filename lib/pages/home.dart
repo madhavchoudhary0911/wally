@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:wally/pages/singleImage.dart';
 
-import '../api_key.dart';
+// import '../api_key.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,8 +23,11 @@ class _HomePageState extends State<HomePage> {
     getPhotos("");
   }
 
-  void getPhotos(searchQuery) async {
-    var head = {"Authorization": apiKey}; //TODO: replace apiKey with your own API key
+  getPhotos(final String searchQuery) async {
+    var head = {
+      "Authorization":
+          "563492ad6f917000010000014fada2ea0f064d3c9867af91ab6384a2"
+    }; //TODO: replace apiKey with your own API key
     var url = Uri.parse(searchQuery == ""
         ? 'https://api.pexels.com/v1/curated?per_page=30'
         : "https://api.pexels.com/v1/search?query=$searchQuery&per_page=40");
@@ -59,8 +62,9 @@ class _HomePageState extends State<HomePage> {
                     children: List.generate(photos.length, (index) {
                       return InkWell(
                         onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) => SingleImageView(data: photos[index])));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  SingleImageView(data: photos[index])));
                         },
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
@@ -78,8 +82,10 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(right: 15, left: 15, bottom: 5, top: 45),
+            padding:
+                const EdgeInsets.only(right: 15, left: 15, bottom: 5, top: 45),
             child: TextField(
+              onSubmitted: (query) => getPhotos(query),
               controller: query,
               onChanged: ((e) => {debugPrint(e)}),
               decoration: InputDecoration(
@@ -104,4 +110,5 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  
 }

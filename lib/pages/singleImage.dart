@@ -1,4 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
 
 class SingleImageView extends StatefulWidget {
   final data;
@@ -9,6 +14,11 @@ class SingleImageView extends StatefulWidget {
 }
 
 class _SingleImageViewState extends State<SingleImageView> {
+
+  var iswalpaperSeting = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +31,8 @@ class _SingleImageViewState extends State<SingleImageView> {
             child: Image.network(
               widget.data['src']['original'],
               fit: BoxFit.cover,
-              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
                   child: Column(
@@ -29,7 +40,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                     children: [
                       CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
                             : null,
                       ),
                       const SizedBox(
@@ -75,7 +87,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.white,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
                               ),
                             ),
                             onPressed: () {
@@ -87,10 +100,12 @@ class _SingleImageViewState extends State<SingleImageView> {
                             style: TextButton.styleFrom(
                               backgroundColor: Colors.blue,
                               shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: (){
+                              setWallpaper();
                               Navigator.pop(context);
                             },
                             child: const Text(
@@ -111,5 +126,26 @@ class _SingleImageViewState extends State<SingleImageView> {
         ],
       ),
     );
+  }
+
+ Future <bool> setWallpaper() async {
+
+   try {
+     var finalFile = await getFileFromUrl(widget.data['src']['original']);
+     int location = WallpaperManagerFlutter.HOME_SCREEN;
+     WallpaperManagerFlutter().setwallpaperfromFile(finalFile, location);
+     print("wallpaper set succesfully");
+     return true;
+   } catch (e) {
+     print("error Occured");
+     return false;
+   }
+    
+  }
+
+  dynamic getFileFromUrl(url)async{
+    print("calling url to file buffer");
+    var cachedimage = await DefaultCacheManager().getSingleFile(url);
+    return cachedimage;
   }
 }
