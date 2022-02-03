@@ -1,13 +1,27 @@
-class PhotoModel {
+import 'package:hive/hive.dart';
+
+part 'photo_model.g.dart';
+
+@HiveType(typeId: 0)
+class PhotoModel extends HiveObject {
+  @HiveField(0)
   int? id;
+
+  @HiveField(1)
   String? url;
+
+  @HiveField(2)
   PhotoSize? photoSize;
 
-  PhotoModel(
-      {this.id,
-      this.url,
-      this.photoSize,
-      });
+  @HiveField(3)
+  bool? isFavorite;
+
+  PhotoModel({
+    this.id,
+    this.url,
+    this.photoSize,
+    this.isFavorite = false,
+  });
 
   PhotoModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -27,17 +41,35 @@ class PhotoModel {
   }
 }
 
+@HiveType(typeId: 0)
 class PhotoSize {
+  @HiveField(0)
   String? original;
+  @HiveField(1)
   String? large2x;
+  @HiveField(2)
   String? large;
+  @HiveField(3)
   String? medium;
+  @HiveField(4)
   String? small;
+  @HiveField(5)
   String? portrait;
+  @HiveField(6)
   String? landscape;
+  @HiveField(7)
   String? tiny;
 
-  PhotoSize({this.original, this.large2x, this.large, this.medium, this.small, this.portrait, this.landscape, this.tiny});
+  PhotoSize({
+    this.original,
+    this.large2x,
+    this.large,
+    this.medium,
+    this.small,
+    this.portrait,
+    this.landscape,
+    this.tiny,
+  });
 
   PhotoSize.fromJson(Map<String, dynamic> json) {
     original = json['original'];

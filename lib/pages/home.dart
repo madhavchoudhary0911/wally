@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:wally/models/photo_model.dart';
+import 'package:wally/pages/favorites_page.dart';
 import 'package:wally/pages/singleImage.dart';
 import 'package:wally/services/network_service.dart';
 
@@ -17,6 +19,12 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     NetworkService().fetchPhotos("");
+  }
+
+  @override
+  void dispose() {
+    Hive.close();
+    super.dispose();
   }
 
   @override
@@ -85,29 +93,66 @@ class _HomePageState extends State<HomePage> {
               }
             },
           ),
-
           Padding(
             padding: const EdgeInsets.only(right: 15, left: 15, bottom: 5, top: 45),
-            child: TextField(
-              onSubmitted: (query) => NetworkService().fetchPhotos(query),
-              controller: query,
-              onChanged: ((e) => {debugPrint(e)}),
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                prefixIcon: const Icon(
-                  Icons.search_rounded,
-                  color: Colors.grey,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: const BorderSide(
-                    width: 0,
-                    style: BorderStyle.none,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    onSubmitted: (query) => NetworkService().fetchPhotos(query),
+                    controller: query,
+                    onChanged: ((e) => {debugPrint(e)}),
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      prefixIcon: const Icon(
+                        Icons.search_rounded,
+                        color: Colors.grey,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(55.0),
+                        borderSide: const BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
+                      hintText: 'Search Wallpapers here',
+                    ),
                   ),
                 ),
-                hintText: 'Search Wallpapers here',
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: SizedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: const CircleBorder(),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8),
+                          child: Icon(
+                            Icons.favorite_rounded,
+                            color: Colors.red,
+                            size: 25,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const FavoritesPage();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
         ],
