@@ -1,4 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
 
 class SingleImageView extends StatefulWidget {
   final data;
@@ -9,6 +14,11 @@ class SingleImageView extends StatefulWidget {
 }
 
 class _SingleImageViewState extends State<SingleImageView> {
+
+  var iswalpaperSeting = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +104,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                                     BorderRadius.all(Radius.circular(5)),
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: (){
+                              setWallpaper();
                               Navigator.pop(context);
                             },
                             child: const Text(
@@ -115,5 +126,26 @@ class _SingleImageViewState extends State<SingleImageView> {
         ],
       ),
     );
+  }
+
+ Future <bool> setWallpaper() async {
+
+   try {
+     var finalFile = await getFileFromUrl(widget.data['src']['original']);
+     int location = WallpaperManagerFlutter.HOME_SCREEN;
+     WallpaperManagerFlutter().setwallpaperfromFile(finalFile, location);
+     print("wallpaper set succesfully");
+     return true;
+   } catch (e) {
+     print("error Occured");
+     return false;
+   }
+    
+  }
+
+  dynamic getFileFromUrl(url)async{
+    print("calling url to file buffer");
+    var cachedimage = await DefaultCacheManager().getSingleFile(url);
+    return cachedimage;
   }
 }
