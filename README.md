@@ -33,6 +33,26 @@ void getPhotos(searchQuery) async {
 - To run the debug apk connect a physical device or emulator and run `flutter run`.
 - To build the release apk run `flutter build apk`.
 
+ <br>
+
+  
+  <h1 align=center> Projects Contributors ✨ </h1>
+ 
+ <br>
+
+
+<table>
+  <p align="center">
+  <tr>
+    <td align="center"><a href="https://github.com/shibam-naskar"><img src="https://avatars.githubusercontent.com/u/39475600?v=4" width="120px;" alt=""/><br /><sub><b>Shibam Naskar</b></sub></a><br /></td>
+   <td align="center"><a href="https://github.com/AmarjitM13"><img src="https://avatars.githubusercontent.com/u/50986992?v=4" width="120px;" alt=""/><br /><sub><b>Amarjit Mallick</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Poulami2515"><img src="https://avatars.githubusercontent.com/u/91011865?v=4?s=100" width="120px;" alt=""/><br /><sub><b>Poulami Paul</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/madhavchoudhary0911"><img src="https://avatars.githubusercontent.com/u/62415167?v=4" width="120px;" alt=""/><br /><sub><b>Madhav Choudhary</b></sub></a><br /></td>
+ </tr>
+   
+   </p>
+ </table>
+
 ## Demo
 <br/>
 <p align="center">
