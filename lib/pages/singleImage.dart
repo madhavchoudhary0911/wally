@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:wallpaper_manager_flutter/wallpaper_manager_flutter.dart';
 import 'package:wally/models/photo_model.dart';
 import 'package:wally/services/storage_service.dart';
@@ -30,7 +31,8 @@ class _SingleImageViewState extends State<SingleImageView> {
             child: Image.network(
               widget.photoModel.photoSize!.original!,
               fit: BoxFit.cover,
-              loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Center(
                   child: Column(
@@ -38,7 +40,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                     children: [
                       CircularProgressIndicator(
                         value: loadingProgress.expectedTotalBytes != null
-                            ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
                             : null,
                       ),
                       const SizedBox(
@@ -56,7 +59,8 @@ class _SingleImageViewState extends State<SingleImageView> {
               Expanded(
                 child: SizedBox(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -86,7 +90,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.white,
                                     shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5)),
                                     ),
                                   ),
                                   onPressed: () {
@@ -98,7 +103,8 @@ class _SingleImageViewState extends State<SingleImageView> {
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.blue,
                                     shape: const RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(5)),
                                     ),
                                   ),
                                   onPressed: () {
@@ -124,7 +130,8 @@ class _SingleImageViewState extends State<SingleImageView> {
               Expanded(
                 child: SizedBox(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 10),
                     child: TextButton(
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -135,7 +142,9 @@ class _SingleImageViewState extends State<SingleImageView> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: Text(
-                          box.containsKey(widget.photoModel.id) ? 'Remove' : 'Add to favorites',
+                          box.containsKey(widget.photoModel.id)
+                              ? 'Remove'
+                              : 'Add to favorites',
                           style: const TextStyle(
                             fontSize: 16,
                             color: Colors.blue,
@@ -176,10 +185,23 @@ class _SingleImageViewState extends State<SingleImageView> {
 
   Future<bool> setWallpaper() async {
     try {
-      var finalFile = await getFileFromUrl(widget.photoModel.photoSize!.original!);
-      int location = WallpaperManagerFlutter.HOME_SCREEN;
-      WallpaperManagerFlutter().setwallpaperfromFile(finalFile, location);
-      debugPrint("wallpaper set successfully");
+      var finalFile =
+          await getFileFromUrl(widget.photoModel.photoSize!.original!);
+      var croppedImage = await ImageCropper.cropImage(
+          sourcePath: finalFile.path,
+          aspectRatio: CropAspectRatio(
+              ratioX: MediaQuery.of(context).size.width,
+              ratioY: MediaQuery.of(context).size.height),
+          androidUiSettings: AndroidUiSettings(
+            toolbarTitle: 'Crop Image',
+            toolbarColor: Colors.blue,
+            hideBottomControls: true,
+          ));
+      if (croppedImage != null) {
+        int location = WallpaperManagerFlutter.HOME_SCREEN;
+        WallpaperManagerFlutter().setwallpaperfromFile(croppedImage, location);
+        debugPrint("wallpaper set successfully");
+      }
       return true;
     } catch (e) {
       debugPrint("error Occurred");
