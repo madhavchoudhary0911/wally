@@ -1,17 +1,26 @@
+<div align="center">
+<a href="#"><img src="https://user-images.githubusercontent.com/77227201/154426952-2d26691d-c203-4631-b75d-00d148cc6559.png" alt="Banner" width="30%"/></a>
+</div>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/39475600/154276380-85cb98e8-abab-4f9a-b46e-44288fff827d.png">
-  <h1 align="center">WALLY</h1>
+  <h1 align="center">Wally</h1>
 </p>
-<p>
-<img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Pixels-02569B?style=for-the-badge&logo=circle&logoColor=whit"/>
-</p>
-Wally is a flutter app for mobile wallpapers.
+<div align="center">
+    <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
+    <img src="https://forthebadge.com/images/badges/built-for-android.svg" />
+    <img src="https://forthebadge.com/images/badges/open-source.svg" />
+</div>
 
-<br/><br/>
+## About The Project
 
+Wally brings an exclusive wallpapers & setups straight to your Android device. With unlimited downloads, you can be sure to never miss the best wallpapers.
 
-## Steps to Run/Build the Project
+## Tech Stack
+
+- Flutter
+- Pixels API
+
+## Getting Started
+
 Flutter must be installed to run the project.
 <br/>
 - Clone the repository
@@ -34,39 +43,27 @@ void getPhotos(searchQuery) async {
 - To run the debug apk connect a physical device or emulator and run `flutter run`.
 - To build the release apk run `flutter build apk`.
 
- <br>
+## Screenshots
 
-  
-  <h1 align=center> Projects Contributors ✨ </h1>
- 
- <br>
+<img width="250" src="https://user-images.githubusercontent.com/39475600/150676431-cc8f7acb-382a-49ec-a507-6f715fee5916.jpeg"/>   <img width="250" src="https://user-images.githubusercontent.com/39475600/150676451-66a96e51-2bdb-42e4-8551-bf5113f8d9d2.jpeg"/>
 
+## Roadmap
 
-<table>
-  <p align="center">
-  <tr>
-    <td align="center"><a href="https://github.com/shibam-naskar"><img src="https://avatars.githubusercontent.com/u/39475600?v=4" width="120px;" alt=""/><br /><sub><b>Shibam Naskar</b></sub></a><br /></td>
-   <td align="center"><a href="https://github.com/AmarjitM13"><img src="https://avatars.githubusercontent.com/u/50986992?v=4" width="120px;" alt=""/><br /><sub><b>Amarjit Mallick</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/Poulami2515"><img src="https://avatars.githubusercontent.com/u/91011865?v=4?s=100" width="120px;" alt=""/><br /><sub><b>Poulami Paul</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/madhavchoudhary0911"><img src="https://avatars.githubusercontent.com/u/62415167?v=4" width="120px;" alt=""/><br /><sub><b>Madhav Choudhary</b></sub></a><br /></td>
- </tr>
-   
-   </p>
- </table>
+See the [open issues](https://github.com/shibam-naskar/wally/issues) for a list of proposed features (and known issues). Feel free to raise new issues.
 
-## Demo
-<br/>
-<p align="center">
- <img width="250" src="https://user-images.githubusercontent.com/39475600/150676431-cc8f7acb-382a-49ec-a507-6f715fee5916.jpeg"/>
-<img width="250" src="https://user-images.githubusercontent.com/39475600/150676451-66a96e51-2bdb-42e4-8551-bf5113f8d9d2.jpeg"/>
-</p>
+## Contributing
 
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-</td>
+1. Fork the Project
+2. Create your Feature Branch ( `git checkout -b feature/AmazingFeature` )
+3. Add your Changes ( `git add .` )
+4. Commit your Changes ( `git commit -m 'Add some AmazingFeature'` )
+5. Push to the Branch ( `git push origin feature/AmazingFeature` )
+6. Open a Pull Request
 
+## Contributors
 
-
-</tr>
- </table>
-
-
+<a href="https://github.com/shibam-naskar/wally/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=shibam-naskar/wally" />
+</a>
