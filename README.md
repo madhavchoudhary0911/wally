@@ -45,7 +45,18 @@ void getPhotos(searchQuery) async {
 
 ## Screenshots
 
-<img width="250" src="https://user-images.githubusercontent.com/39475600/150676431-cc8f7acb-382a-49ec-a507-6f715fee5916.jpeg"/>   <img width="250" src="https://user-images.githubusercontent.com/39475600/150676451-66a96e51-2bdb-42e4-8551-bf5113f8d9d2.jpeg"/>
+<div align="center">
+<img width="250" src="https://user-images.githubusercontent.com/39475600/150676431-cc8f7acb-382a-49ec-a507-6f715fee5916.jpeg"/>   
+<img width="250" src="https://user-images.githubusercontent.com/39475600/150676451-66a96e51-2bdb-42e4-8551-bf5113f8d9d2.jpeg"/>
+<img width="250" height="556" src="https://user-images.githubusercontent.com/91011865/155923753-62223195-252a-44f6-94f6-cb9582d9aff6.jpg"/>
+</div>
+  <br> <br>
+<div align="center">
+<img width="250" src="https://user-images.githubusercontent.com/91011865/155924244-430b7789-04e3-4567-af6a-2e5abdebcd0d.jpg"/>
+<img width="250" src="https://user-images.githubusercontent.com/91011865/155924672-b1b75ae1-13d3-4bde-9ed3-3face64c458c.jpg"/>
+<img width="250" src="https://user-images.githubusercontent.com/91011865/155924771-c34df26a-a05c-4d40-8d6b-2d4bd81d0686.jpg"/>
+</div>
+
 
 ## Roadmap
 
